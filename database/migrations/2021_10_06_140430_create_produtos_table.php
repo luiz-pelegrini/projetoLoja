@@ -19,7 +19,7 @@ class CreateProdutosTable extends Migration
             $table->integer('codigo');
             $table->double('valor', 8, 2);
             $table->timestamps();
-            $table->unsignedBigInteger('loja_id');
+            $table->unsignedBigInteger('loja_id')->nullable();
             $table->foreign('loja_id')->references('id')->on('lojas');
         });
     }

@@ -19,7 +19,7 @@ class CreateUsuariosTable extends Migration
             $table->string('email', 100);
             $table->string('senha');
             $table->timestamps();
-            $table->unsignedBigInteger('loja_id');
+            $table->unsignedBigInteger('loja_id')->nullable();
             $table->foreign('loja_id')->references('id')->on('lojas');
         });
     }

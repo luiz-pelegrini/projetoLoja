@@ -9,8 +9,18 @@ class UsuariosController extends Controller
 {
     public function index()
     {
-        $usuario = Usuario::get();
-        dd($usuario);
-        return view('usuarios.index');
+        $usuarios = Usuario::get();
+
+        return view('usuarios.index', ['usuarios' => $usuarios]);
+    }
+
+    public function create()
+    {
+        return view('usuarios.create');
+    }
+
+    public function store(Request $request)
+    {
+        dd($request);
     }
 }
