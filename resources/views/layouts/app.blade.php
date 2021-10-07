@@ -8,6 +8,17 @@
     <title>@yield('title')</title>
 </head>
 <body>
+    <ul class="nav nav-pills nav-fill">
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('usuarios-index') }}">Usuários</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('lojas-index') }}">Lojas</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('produtos-index') }}">Produtos</a>
+        </li>
+    </ul>
     @yield('content')
 </body>
 </html>

@@ -5,9 +5,9 @@
 @section('content')
 
   <div class="container mt-5">
-    <h1>Inserir um novo usuário</h1>
+    <h1>Inserir uma nova loja</h1>
     <hr>
-    <form action="{{route('usuarios-store')}}" method="POST">
+    <form action="{{route('lojas-store')}}" method="POST">
     @csrf
         <div class="form-group">
             <div class="form-group">
@@ -16,13 +16,8 @@
             </div>
             <br>
             <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="text" class="form-control" name="email" placeholder="Digite seu email">
-            </div>
-            <br>
-            <div class="form-group">
-                <label for="senha">Senha:</label>
-                <input type="password" class="form-control" name="senha" placeholder="Digite sua senha">
+                <label for="endereço">Endereço:</label>
+                <input type="text" class="form-control" name="endereco" placeholder="Digite seu endereço">
             </div>
             <br>
             <div class="form-group">

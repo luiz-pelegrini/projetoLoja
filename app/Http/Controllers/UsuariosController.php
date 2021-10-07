@@ -21,6 +21,38 @@ class UsuariosController extends Controller
 
     public function store(Request $request)
     {
-        dd($request);
+        Usuario::create($request->all());
+
+        return redirect()->route('usuarios-index');
+    }
+
+    public function edit(int $id)
+    {
+        $usuario = Usuario::where('id', $id)->first();
+
+        if (empty($usuario)) {
+            return redirect()->route('usuarios-index');
+        }
+
+        return view('usuarios.edit', ['usuarios' => $usuario]);
+    }
+
+    public function update(Request $request, int $id)
+    {
+        $dadosAlterados = [
+            'nome' => $request->nome,
+            'email' => $request->email,
+            'senha' => $request->senha,
+        ];
+        Usuario::where('id', $id)->update($dadosAlterados);
+
+        return redirect()->route('usuarios-index');
+    }
+
+    public function destroy(int $id)
+    {
+        Usuario::where('id', $id)->delete();
+
+        return redirect()->route('usuarios-index');
     }
 }
