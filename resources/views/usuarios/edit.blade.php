@@ -27,6 +27,11 @@
             </div>
             <br>
             <div class="form-group">
+                <label for="loja_id">Loja:</label>
+                <input type="text" class="form-control" name="loja_id" value=" {{ $usuarios->loja_id }} " placeholder="Digite o identificador da loja">
+            </div>
+            <br>
+            <div class="form-group">
                 <input type="submit" name="submit" class="btn btn-success" value="Atualizar">
             </div>
         </div>

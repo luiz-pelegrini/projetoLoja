@@ -5,9 +5,9 @@
 @section('content')
 
   <div class="container mt-5">
-    <h1>Inserir um novo usuário</h1>
+    <h1>Inserir um novo produto</h1>
     <hr>
-    <form action="{{route('usuarios-store')}}" method="POST">
+    <form action="{{route('produtos-store')}}" method="POST">
     @csrf
         <div class="form-group">
             <div class="form-group">
@@ -16,18 +16,18 @@
             </div>
             <br>
             <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="text" class="form-control" name="email" placeholder="Digite seu email">
+                <label for="codigo">Código:</label>
+                <input type="text" class="form-control" name="codigo" placeholder="Digite o código do produto">
             </div>
             <br>
             <div class="form-group">
-                <label for="senha">Senha:</label>
-                <input type="password" class="form-control" name="senha" placeholder="Digite sua senha">
+                <label for="valor">Valor:</label>
+                <input type="text" class="form-control" name="valor" placeholder="Digite o valor do produto">
             </div>
             <br>
             <div class="form-group">
                 <label for="loja_id">Loja:</label>
-                <input type="text" class="form-control" name="loja_id" placeholder="Digite o identificador da loja">
+                <input type="text" class="form-control" name="loja_id" placeholder="Digite a loja que o produto se refere">
             </div>
             <br>
             <div class="form-group">

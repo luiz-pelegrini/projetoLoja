@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Loja;
 use Illuminate\Http\Request;
+use Exception;
 
 class LojasController extends Controller
 {
@@ -21,7 +22,12 @@ class LojasController extends Controller
 
     public function store(Request $request)
     {
-        Loja::create($request->all());
+
+        try {
+            Loja::create($request->all());
+        } catch (\Throwable $th) {
+            throw new Exception("Erro ao inserir loja, verifique as informações enviadas.");
+        }
 
         return redirect()->route('lojas-index');
     }
@@ -44,14 +50,22 @@ class LojasController extends Controller
             'endereco' => $request->endereco,
         ];
 
-        Loja::where('id', $id)->update($dadosAlterados);
+        try {
+            Loja::where('id', $id)->update($dadosAlterados);
+        } catch (\Throwable $th) {
+            throw new Exception("Erro ao alterar loja: {$th}");
+        }
 
         return redirect()->route('lojas-index');
     }
 
     public function destroy(int $id)
     {
-        Loja::where('id', $id)->delete();
+        try {
+            Loja::where('id', $id)->delete();
+        } catch (\Throwable $th) {
+            throw new Exception("Erro ao deletar loja: {$th}");
+        }
 
         return redirect()->route('lojas-index');
     }

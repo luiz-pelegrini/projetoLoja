@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Usuario;
 use Illuminate\Http\Request;
+use Exception;
 
 class UsuariosController extends Controller
 {
@@ -21,7 +22,11 @@ class UsuariosController extends Controller
 
     public function store(Request $request)
     {
-        Usuario::create($request->all());
+        try {
+            Usuario::create($request->all());
+        } catch (\Throwable $th) {
+            throw new Exception("Erro ao inserir usuário, verifique as informações enviadas.");
+        }
 
         return redirect()->route('usuarios-index');
     }
@@ -43,15 +48,25 @@ class UsuariosController extends Controller
             'nome' => $request->nome,
             'email' => $request->email,
             'senha' => $request->senha,
+            'loja_id' => $request->loja_id,
         ];
-        Usuario::where('id', $id)->update($dadosAlterados);
+
+        try {
+            Usuario::where('id', $id)->update($dadosAlterados);
+        } catch (\Throwable $th) {
+            throw new Exception("Erro ao alterar usuário, verifique as informações enviadas.");
+        }
 
         return redirect()->route('usuarios-index');
     }
 
     public function destroy(int $id)
     {
-        Usuario::where('id', $id)->delete();
+        try {
+            Usuario::where('id', $id)->delete();
+        } catch (\Throwable $th) {
+            throw new Exception("Erro ao excluir usuário: {$th}");
+        }
 
         return redirect()->route('usuarios-index');
     }
